@@ -1,11 +1,10 @@
 <template>
   <div class="list">
-    <PictureItem v-for="(hit, key) of hits.hits" :key="key" :hit="hit" />
+    <PictureItem v-for="(hit, key) of hits" :key="key" :hit="hit" />
   </div>
 </template>
 
 <script>
-import { inject, onUpdated } from "vue";
 import PictureItem from "./PictureItem.vue";
 
 export default {
@@ -13,19 +12,11 @@ export default {
   components: {
     PictureItem,
   },
-
-  setup() {
-    const data = inject("data");
-
-    onUpdated(() => {
-      const data = inject("data");
-      console.log(data)
-    });
-
-    return {
-      hits: data,
-    };
-  },
+  computed: {
+    hits() {
+      return this.$store.state.hits
+    }
+  }
 };
 </script>
 

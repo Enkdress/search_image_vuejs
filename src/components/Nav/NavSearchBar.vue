@@ -13,6 +13,7 @@
 
 <script>
 import { ref } from "vue";
+import { getHits } from "@/services";
 
 export default {
   data() {
@@ -21,10 +22,9 @@ export default {
     };
   },
   name: "SearchBar",
-  emits: ["search"],
   methods: {
     search() {
-      this.$emit("search", this.userInput);
+      getHits(this.userInput).then((data) => this.$store.commit("getHits", data.hits));
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <h1>Search for images</h1>
-    <SearchBar @search="searchData" />
+    <SearchBar />
   </div>
 </template>
 
@@ -12,12 +12,6 @@ export default {
   name: "Header",
   components: {
     SearchBar,
-  },
-  emits: ["search-data"],
-  methods: {
-    searchData(userInput) {
-      this.$emit("search-data", userInput);
-    },
   },
 };
 </script>
